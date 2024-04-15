@@ -1,0 +1,72 @@
+{
+  "name": "test-release-process",
+  "dockerComposeFile": [
+    "docker-compose.yml"
+  ],
+  "forwardPorts": [
+    3000
+  ],
+  "service": "next-app",
+  "runServices": [
+    "next-app"
+  ],
+  "shutdownAction": "stopCompose",
+  "workspaceFolder": "/workspace",
+  "overrideCommand": true,
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-vscode.vscode-typescript-next", // typescript
+        "willluke.nextjs", // nextjs/prisma integration
+        "bradlc.vscode-tailwindcss", // tailwind toolkit
+        "firsttris.vscode-jest-runner", // jest test runner
+        "dbaeumer.vscode-eslint", // ESLint
+        "esbenp.prettier-vscode", // Prettier code formatter
+        "bierner.color-info", // JSX and CSS color information
+        "visualstudioexptteam.vscodeintellicode", // AI-assisted development
+        "cssho.vscode-svgviewer", // SVG viewer
+        "eamodio.gitlens", // IDE Git information
+        "shardulm94.trailing-spaces", // Show trailing spaces
+        "davidanson.vscode-markdownlint",
+        "IBM.output-colorizer" // Colorize your output/test logs
+      ],
+      "settings": {
+        "files.eol": "\n",
+        "editor.tabSize": 2,
+        "terminal.integrated.defaultProfile.linux": "zsh",
+        "terminal.integrated.profiles.linux": {
+          "zsh": {
+              "path": "/bin/zsh"
+          }
+        },
+        "editor.codeActionsOnSave": {
+          "source.fixAll.eslint": true
+        },
+        "eslint.validate": [
+          "javascript",
+          "javascriptreact",
+          "typescript",
+          "typescriptreact"
+        ],
+        "editor.formatOnSave": true,
+        "[javascript]": {
+          "editor.defaultFormatter": "esbenp.prettier-vscode",
+          "editor.formatOnSave": true
+        },
+        "[javascriptreact]": {
+          "editor.defaultFormatter": "esbenp.prettier-vscode",
+          "editor.formatOnSave": true
+        },
+        "[typescript]": {
+          "editor.defaultFormatter": "esbenp.prettier-vscode",
+          "editor.formatOnSave": true
+        },
+        "[typescriptreact]": {
+          "editor.defaultFormatter": "esbenp.prettier-vscode",
+          "editor.formatOnSave": true
+        },
+        "prettier-eslint.eslintIntegration": true
+      }
+    }
+  }
+}
