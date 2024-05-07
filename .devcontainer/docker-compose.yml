@@ -1,8 +1,10 @@
-version: '3.9'
+version: "3.9"
 services:
   next-app:
     image: roboticsplus/nodejs:1.0.0
     container_name: test-next-app
+    depends_on:
+      - db
     volumes:
       - ..:/workspace:cached
       # Docker socket to access Docker server
@@ -11,3 +13,24 @@ services:
       - ~/.ssh:/home/rpl/.ssh
       # Git config
       - ~/.gitconfig:/home/rpl/.gitconfig
+    environment:
+      - DATABASE_URL=postgresql://postgres:postgres@db:5432/test-db
+    networks:
+      - app-network
+  db:
+    image: postgres:16
+    container_name: test-db
+    restart: unless-stopped
+    volumes:
+      - postgres:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_PASSWORD=postgres
+    networks:
+      - app-network
+
+volumes:
+  postgres:
+
+networks:
+  app-network:
+    name: test-app-network
